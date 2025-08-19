@@ -85,4 +85,6 @@ A tabela abaixo apresenta os endpoints disponíveis na API.
 
 ## Conclusão
 
+O projeto Fórum Hub demonstra o domínio das tecnologias e conceitos essenciais para o desenvolvimento de uma API REST robusta e segura. A implementação de funcionalidades como CRUD de tópicos, autenticação com JWT e validações de regras de negócio não apenas atende aos requisitos do desafio, mas também valida a aplicação de boas práticas de desenvolvimento backend.
 
+A utilização de ferramentas como Spring Boot, Spring Security e JPA/Hibernate permitiu a criação de um sistema eficiente e com manutenção simplificada. Este projeto serve como um sólido ponto de partida para a criação de sistemas mais complexos, provando a capacidade de construir soluções escaláveis e seguras.
