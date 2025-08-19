@@ -11,12 +11,13 @@
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Funcionalidades da Aplicação](#funcionalidades-da-aplicação)
 - [Como Executar o Projeto](#como-executar-o-projeto)
-- [Persistência de Dados](#persistência-de-dados)
+- [Endpoints](#endpoints)
 - [Conclusão](#conclusão)
 
 ## Descrição
 
 O **Fórum Hub** é uma API REST desenvolvida com o objetivo de criar o back-end de um fórum de discussão, permitindo que os usuários criem, leiam, atualizem e deletem tópicos, com um sistema de autenticação seguro para proteger as rotas.
+
 Este projeto foi desenvolvido como parte do programa de formação da Oracle em parceria com a Alura, proporcionando aprendizado prático e a oportunidade de aplicar conceitos essenciais do desenvolvimento back-end com Java e Spring Boot, incluindo a criação de uma API REST, validações, segurança com autenticação stateless via Tokens JWT e persistência de dados, além de aplicar conceitos avançados como criação de endpoints, implementação de camadas de segurança, entre outros.
 
 ---
@@ -54,7 +55,7 @@ Este projeto foi desenvolvido como parte do programa de formação da Oracle em 
 ### Passos
 1. Clone o repositório:  
    ```bash
-   git clone https://github.com/lucas-yago/ForumHub-api.git
+   git clone https://github.com/LeonardoBezerra01/ForumHub.git
    cd ForumHub
    ```
 2. Configure o banco de dados em `application.properties` (usuário, senha e URL).  
@@ -66,15 +67,22 @@ Este projeto foi desenvolvido como parte do programa de formação da Oracle em 
 
 ---
 
-## Persistência de Dados
+## Endpoints
 
-A persistência dos dados é gerenciada pelo Spring Data JPA, que utiliza as interfaces RepositorioLivros e RepositorioAutores. As classes Livro e Autor são mapeadas como entidades (@Entity) e as tabelas correspondentes são criadas no banco de dados PostgreSQL.
-- A classe Livro possui um relacionamento @OneToMany com Autor.
-- A classe Autor possui um relacionamento @ManyToOne com Livro.
-A aplicação utiliza as anotações do Spring para autoinjetar os repositórios (@Autowired), facilitando o acesso e a manipulação dos dados no banco de dados.
+A tabela abaixo apresenta os endpoints disponíveis na API.
+
+| Método HTTP | Endpoint        | Descrição                              | Necessita Autenticação? | Corpo da Requisição (JSON)                                |
+| :---------- | :-------------- | :------------------------------------- | :---------------------- | :-------------------------------------------------------- |
+| `POST`      | `/login`        | Autentica um usuário e retorna um token JWT. | **Não** | `{ "email": "seu-email", "senha": "sua-senha" }`           |
+| `POST`      | `/topicos`      | Cadastra um novo tópico.               | **Sim** | `{ "id": "...", "titulo": "...", "mensagem": "...", "idAutor": "...", "idCurso": "..." }` |
+| `GET`       | `/topicos`      | Lista todos os tópicos cadastrados.          | **Sim** | N/A                                                       |
+| `GET`       | `/topicos/{id}` | Busca um tópico específico pelo seu ID.      | **Sim** | N/A                                                       |
+| `PUT`       | `/topicos/{id}` | Atualiza um tópico existente.          | **Sim** | `{ "id": "...", "titulo": "...", "mensagem": "..." }` |
+| `DELETE`    | `/topicos/{id}` | Exclui um tópico logicamente.          | **Sim** | N/A                                                       |
+
 
 ---
 
 ## Conclusão
 
-Em resumo, o projeto é um excelente exemplo de como combinar diferentes tecnologias para resolver um problema real, praticando conceitos como consumo de API, persistência de dados, mapeamento de objetos e interação com o usuário em um ambiente de desenvolvimento Java e Spring.
+
